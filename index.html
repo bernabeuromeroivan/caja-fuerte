@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Memoria Animal · Caja Fuerte</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>🧠 Memoria Animal</h1>
+      <div id="userbox" class="userbox" hidden>
+        <nav>
+          <button id="nav-play" class="link">Jugar</button>
+          <button id="nav-history" class="link">Historial</button>
+        </nav>
+        <span id="user-name" class="user-name"></span>
+        <button id="logout" class="btn small secondary">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="view-loading" class="panel"><p>Cargando…</p></section>
+
+      <section id="view-login" class="panel" hidden>
+        <h2>Bienvenido</h2>
+        <p>Inicia sesión para jugar y guardar tus partidas.</p>
+        <form id="email-form" class="form">
+          <input id="email" type="email" placeholder="Correo electrónico" autocomplete="email" required />
+          <input id="password" type="password" placeholder="Contraseña (mín. 6 caracteres)" autocomplete="current-password" minlength="6" required />
+          <div class="row">
+            <button type="submit" class="btn">Entrar</button>
+            <button type="button" id="signup" class="btn secondary">Crear cuenta</button>
+          </div>
+        </form>
+        <p id="login-error" class="error"></p>
+        <p id="login-info" class="muted"></p>
+        <button type="button" id="google-login">Entrar con Google</button>
+      </section>
+
+      <section id="view-home" class="panel" hidden>
+        <h2>Memoria Animal</h2>
+        <h3>Instrucciones</h3>
+        <ul>
+          <li>Hay 16 cartas boca abajo: 8 parejas de animales.</li>
+          <li>Toca dos cartas por turno. Si coinciden, se quedan descubiertas.</li>
+          <li>Encuentra todas las parejas antes de que se acabe el tiempo (120 s).</li>
+          <li>Puntuación: 100 por pareja, +5 por cada segundo que sobre y −10 por cada fallo.</li>
+        </ul>
+        <button id="start" class="btn">Nueva partida</button>
+      </section>
+
+      <section id="view-game" class="panel" hidden>
+        <div class="hud">
+          <span>⏱ <b id="hud-time">120</b> s</span>
+          <span>Movimientos: <b id="hud-moves">0</b></span>
+        </div>
+        <div id="board" class="board"></div>
+        <button id="abandon" class="btn small secondary">Abandonar</button>
+      </section>
+
+      <section id="view-result" class="panel" hidden>
+        <h2 id="result-title"></h2>
+        <p class="big">Puntuación: <b id="result-score"></b></p>
+        <p>Duración: <b id="result-duration"></b> s · Movimientos: <b id="result-moves"></b></p>
+        <p id="save-status" class="muted"></p>
+        <div class="row">
+          <button id="again" class="btn">Jugar otra vez</button>
+          <button id="to-history" class="btn secondary">Ver historial</button>
+        </div>
+      </section>
+
+      <section id="view-history" class="panel" hidden>
+        <h2>Mi historial</h2>
+        <p>Total de partidas jugadas: <b id="history-total">0</b></p>
+        <p id="history-error" class="error"></p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Fecha</th><th>Resultado</th><th>Puntos</th><th>Duración</th></tr>
+            </thead>
+            <tbody id="history-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
